@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/home">
+    <fragment
+        android:id="@+id/home"
+        android:name="com.tomvarga.notes.show.ShowNotesFragment"
+        android:label="show_notes_fragment"
+        tools:layout="@layout/show_notes_fragment" />
+    <fragment
+        android:id="@+id/add"
+        android:name="com.tomvarga.notes.write.WriteFragment"
+        android:label="fragment_write"
+        tools:layout="@layout/fragment_write" />
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.tomvarga.notes.settings.SettingsFragment"
+        android:label="settings_fragment"
+        tools:layout="@layout/settings_fragment" />
+</navigation>
