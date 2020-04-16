@@ -2,11 +2,10 @@ package com.tomvarga.notes.write
 
 import android.content.Context
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.ViewModelProvider
 
@@ -30,7 +29,29 @@ class WriteFragment : Fragment() {
 
         showSoftKeyboard(binding.editText)
 
+
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.toolbar_menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        when(id){
+            R.id.action_save -> Toast.makeText(context,"Save",Toast.LENGTH_LONG).show()
+            R.id.action_clear -> Toast.makeText(context,"Cleared",Toast.LENGTH_LONG).show()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     fun showSoftKeyboard(view: View) {

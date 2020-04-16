@@ -3,7 +3,9 @@ package com.tomvarga.notes
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.view.Window
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -35,8 +37,4 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController,null)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu,menu)
-        return true
-    }
 }
