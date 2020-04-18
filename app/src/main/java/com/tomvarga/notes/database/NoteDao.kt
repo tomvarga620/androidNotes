@@ -1,5 +1,6 @@
 package com.tomvarga.notes.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -15,6 +16,12 @@ interface NoteDao {
     fun update(note:Note)
 
     @Query("SELECT * FROM notes_database ORDER BY noteId ")
-    fun getAllNotes()
+    fun getAllNotesList(): List<Note>
+
+    @Query("SELECT * FROM notes_database ORDER BY noteId ")
+    fun getAllNotes(): LiveData<List<Note>>
+
+    @Query("SELECT * from notes_database WHERE noteId = :key")
+    fun get(key: Long): Note?
 
 }
