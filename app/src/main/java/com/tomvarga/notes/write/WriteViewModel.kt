@@ -36,6 +36,12 @@ class WriteViewModel(
         }
     }
 
+    private suspend fun deleteAll() {
+        return withContext(Dispatchers.IO){
+            database.deleteAllRecords()
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
@@ -53,6 +59,12 @@ class WriteViewModel(
     fun getNotes(){
         uiScope.launch {
             Log.i("List of Notes", getAllNotesListData().toString())
+        }
+    }
+
+    fun deleteAllRecords(){
+        uiScope.launch {
+            deleteAll()
         }
     }
 

@@ -26,7 +26,7 @@ class WriteFragment : Fragment() {
 
         // binding
         binding = FragmentWriteBinding.inflate(inflater)
-        binding.editText.requestFocus()
+        binding.editText
 
         // showing keyboard on fragment create
         showSoftKeyboard(binding.editText)
@@ -68,18 +68,26 @@ class WriteFragment : Fragment() {
 
                 // vytvorenie noveho objektu s textom
                 val newNote: Note = Note(noteText = editTextObj.text.toString())
-
-                // insert do db room
-                binding.viewModel?.saveNote(newNote)
-
-                // clear edit textu
-                clearUserInput(editTextObj)
+                // checknutie či je text null
+                if(newNote.noteText!!.isNotEmpty()){
+                    // insert do db room
+                    binding.viewModel?.saveNote(newNote)
+                    // clear edit textu
+                    clearUserInput(editTextObj)
+                    hideSoftKeyboard(editTextObj)
+                    //saved toast
+                    Toast.makeText(context,"Note Saved",Toast.LENGTH_LONG).show()
+                } else {
+                    binding.editText.setError("BAD INPUT!!!")
+                    hideSoftKeyboard(editTextObj)
+                }
             }
 
             R.id.action_clear -> {
 
                 clearUserInput(editTextObj)
-                binding.viewModel?.getNotes()
+                //binding.viewModel?.deleteAllRecords()
+                //binding.viewModel?.getNotes()
                 //Toast.makeText(context,notesPrint,Toast.LENGTH_LONG).show()
 
             }
@@ -96,9 +104,15 @@ class WriteFragment : Fragment() {
         }
     }
 
+    fun hideSoftKeyboard(view:View){
+        if (view.requestFocus()) {
+            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            //imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT)
+            imm.toggleSoftInput(1,0)
+        }
+    }
+
     fun clearUserInput(v: EditText){
         v.text.clear()
     }
-
-
 }
