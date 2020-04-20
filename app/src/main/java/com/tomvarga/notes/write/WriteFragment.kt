@@ -115,4 +115,5 @@ class WriteFragment : Fragment() {
     fun clearUserInput(v: EditText){
         v.text.clear()
     }
+
 }
