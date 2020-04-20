@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.setupWithNavController
 import com.tomvarga.notes.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -27,9 +26,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.myToolbar)
 
         navController = Navigation.findNavController(this,R.id.my_nav_host_fragment)
-        bottomNav.setupWithNavController(navController)
 
-        NavigationUI.setupActionBarWithNavController(this,navController)
+        NavigationUI.setupWithNavController(bottomNav,navController)
 
     }
 
