@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 
 import com.tomvarga.notes.R
@@ -46,6 +47,8 @@ class WriteFragment : Fragment() {
             .get(WriteViewModel::class.java)
 
         binding.viewModel = writeViewModel
+
+        activity?.setTitle("Write Note")
 
         return binding.root
     }
@@ -119,5 +122,11 @@ class WriteFragment : Fragment() {
 
     fun createNoteObject(noteText: String): Note {
         return Note(noteText=noteText,noteDate= DateTime.now().toString(DateTimeFormat.mediumDate()))
+    }
+
+    override fun onDestroy() {
+        val editTextObj = binding.editText
+        hideSoftKeyboard(editTextObj)
+        super.onDestroy()
     }
 }

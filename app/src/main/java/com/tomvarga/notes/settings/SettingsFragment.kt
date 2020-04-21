@@ -24,6 +24,8 @@ class SettingsFragment : Fragment() {
 
         binding.viewModel = viewModel
 
+        activity?.setTitle("Settings")
+
         return binding.root
 
     }

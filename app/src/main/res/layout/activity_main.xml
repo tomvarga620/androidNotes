@@ -17,7 +17,7 @@
             android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/colorprimary"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
@@ -38,7 +38,7 @@
             app:menu="@menu/bottom_menu"
             app:itemTextColor="@color/colorWhite"
             app:itemIconTint="@color/colorWhite"
-            android:background="@color/colorPrimaryDark" />
+            android:background="?attr/colorprimarydark" />
 
     </LinearLayout>
 </layout>

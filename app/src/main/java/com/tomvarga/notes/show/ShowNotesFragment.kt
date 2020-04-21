@@ -55,6 +55,8 @@ class ShowNotesFragment : Fragment() {
 
         //binding.setLifecycleOwner(this)
 
+        activity?.setTitle("All Notes")
+
         return binding.root
     }
 
