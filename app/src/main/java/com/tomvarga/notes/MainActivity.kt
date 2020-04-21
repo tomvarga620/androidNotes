@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.tomvarga.notes.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
+import net.danlew.android.joda.JodaTimeAndroid
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // init yodatime library
+        JodaTimeAndroid.init(this)
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 

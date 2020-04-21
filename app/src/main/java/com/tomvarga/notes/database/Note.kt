@@ -12,5 +12,10 @@ data class Note(
 
     @NotNull
     @ColumnInfo(name = "note")
-    val noteText: String?
+    val noteText: String?,
+
+    @NotNull
+    @ColumnInfo(name = "date")
+    val noteDate: String?
+
 )

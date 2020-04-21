@@ -7,13 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 
 import com.tomvarga.notes.R
 import com.tomvarga.notes.database.Note
 import com.tomvarga.notes.database.NoteDatabase
 import com.tomvarga.notes.databinding.FragmentWriteBinding
+import org.joda.time.DateTime
+import org.joda.time.format.DateTimeFormat
 
 class WriteFragment : Fragment() {
 
@@ -66,8 +67,8 @@ class WriteFragment : Fragment() {
         when(id){
             R.id.action_save -> {
 
-                // vytvorenie noveho objektu s textom
-                val newNote: Note = Note(noteText = editTextObj.text.toString())
+                // vytvorenie noveho objektu s textom a dátumom
+                val newNote: Note = createNoteObject(editTextObj.text.toString())
                 // checknutie či je text null
                 if(newNote.noteText!!.isNotEmpty()){
                     // insert do db room
@@ -116,4 +117,7 @@ class WriteFragment : Fragment() {
         v.text.clear()
     }
 
+    fun createNoteObject(noteText: String): Note {
+        return Note(noteText=noteText,noteDate= DateTime.now().toString(DateTimeFormat.mediumDate()))
+    }
 }
